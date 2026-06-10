@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulasi Transformasi Digital UMKM Tradisional</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="theme-pre" id="body-theme">
+
+  <div class="app-container">
+    
+    <!-- Header Area -->
+    <header>
+      <div class="brand-section">
+        <span class="brand-badge">E-Business System Project</span>
+        <h1 class="brand-title">Transformasi Digital UMKM Tradisional</h1>
+        <p class="brand-subtitle">Simulasi Interaktif Visual Dualisme & Antigravity (Dosen Pengampu: Ibu Masruroh, S.E., M.M.)</p>
+      </div>
+      <div class="status-badge" id="status-badge">
+        <span class="status-indicator"></span>
+        <span id="status-text">Fase: Pra-Transformasi</span>
+      </div>
+    </header>
+
+    <!-- Main Workbench Layout -->
+    <div class="main-grid">
+      
+      <!-- Interactive Simulator Viewport -->
+      <div class="viewport-card" id="viewport-card">
+        <div class="grid-overlay"></div>
+        
+        <!-- SVG Connections Overlay (Only visible in Post-transformation) -->
+        <svg class="connections-svg" id="connections-svg">
+          <path class="connection-path" id="path-commission" d="M0,0 L0,0" />
+          <path class="connection-path" id="path-data" d="M0,0 L0,0" />
+          <path class="connection-path" id="path-lockin" d="M0,0 L0,0" />
+          <path class="connection-path" id="path-price" d="M0,0 L0,0" />
+          <path class="connection-path" id="path-inventory" d="M0,0 L0,0" />
+        </svg>
+
+        <div class="sim-container" id="sim-container">
+          
+          <!-- Metrics HUD (Appears post-transformation) -->
+          <div class="metrics-hud" id="metrics-hud">
+            <div class="hud-card">
+              <span class="hud-icon">📈</span>
+              <div class="hud-data">
+                <span class="hud-label">Margin Keuntungan</span>
+                <span class="hud-value" id="hud-val-margin">Normal</span>
+              </div>
+            </div>
+            <div class="hud-card">
+              <span class="hud-icon">👥</span>
+              <div class="hud-data">
+                <span class="hud-label">Retensi Konsumen</span>
+                <span class="hud-value" id="hud-val-retention">Rendah</span>
+              </div>
+            </div>
+            <div class="hud-card">
+              <span class="hud-icon">💰</span>
+              <div class="hud-data">
+                <span class="hud-label">Model Finansial</span>
+                <span class="hud-value" id="hud-val-infra">Bootstrap</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Central Core (Hidden in pre-transformation, glows in post-transformation) -->
+          <div class="central-core" id="central-core">
+            <span class="core-icon">🌐</span>
+            <span class="core-title">E-Commerce Mandiri</span>
+            <span class="core-subtitle">Kanal Terpusat D2C</span>
+          </div>
+
+          <!-- Node 1: Commission / Fee -->
+          <div class="node" id="node-commission" data-citation="cite-commission">
+            <div class="node-header">
+              <span class="node-icon" id="icon-commission">⚠️</span>
+              <span class="node-badge" id="badge-commission">Lock-in</span>
+            </div>
+            <div class="node-title" id="title-commission">Potongan Komisi Tinggi (20%+)</div>
+            <div class="node-desc" id="desc-commission">Potongan pihak ketiga yang menggerus margin laba UMKM.</div>
+          </div>
+
+          <!-- Node 2: Customer Data -->
+          <div class="node" id="node-data" data-citation="cite-data">
+            <div class="node-header">
+              <span class="node-icon" id="icon-data">🔒</span>
+              <span class="node-badge" id="badge-data">Silo Data</span>
+            </div>
+            <div class="node-title" id="title-data">Data Pelanggan Hilang</div>
+            <div class="node-desc" id="desc-data">UMKM tidak memiliki akses data kontak untuk remarketing.</div>
+          </div>
+
+          <!-- Node 3: Platform Lock-In -->
+          <div class="node" id="node-lockin" data-citation="cite-lockin">
+            <div class="node-header">
+              <span class="node-icon" id="icon-lockin">⛓️</span>
+              <span class="node-badge" id="badge-lockin">Agregator</span>
+            </div>
+            <div class="node-title" id="title-lockin">Ketergantungan Agregator</div>
+            <div class="node-desc" id="desc-lockin">Terikat aturan algoritma sepihak platform pihak ketiga.</div>
+          </div>
+
+          <!-- Node 4: Price War -->
+          <div class="node" id="node-price" data-citation="cite-price">
+            <div class="node-header">
+              <span class="node-icon" id="icon-price">💥</span>
+              <span class="node-badge" id="badge-price">Kompetisi</span>
+            </div>
+            <div class="node-title" id="title-price">Perang Harga Sengit</div>
+            <div class="node-desc" id="desc-price">Terjebak banting harga dengan ribuan kompetitor agregator.</div>
+          </div>
+
+          <!-- Node 5: Stock / Inventory Sync -->
+          <div class="node" id="node-inventory" data-citation="cite-inventory">
+            <div class="node-header">
+              <span class="node-icon" id="icon-inventory">🔄</span>
+              <span class="node-badge" id="badge-inventory">Manual</span>
+            </div>
+            <div class="node-title" id="title-inventory">Silo Stok Terpisah</div>
+            <div class="node-desc" id="desc-inventory">Sinkronisasi manual rentan kekeliruan (oversell/undersell).</div>
+          </div>
+
+          <!-- Central Simulator Floating Controls -->
+          <div class="control-bar">
+            <button class="btn btn-primary" id="btn-transform">
+              <span class="btn-icon">⚡</span>
+              <span id="btn-transform-text">Aktifkan Kemandirian Digital</span>
+            </button>
+            <button class="btn btn-secondary" id="btn-reset" style="display: none;">
+              <span class="btn-icon">🔄</span>
+              <span>Reset Simulasi</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right Academic Reference Panel -->
+      <div class="academic-panel">
+        <div class="panel-header">
+          <span class="panel-icon">📚</span>
+          <div>
+            <h2 class="panel-title">Kajian Teoretis & Validasi</h2>
+            <p class="panel-desc">Menghubungkan visualisasi simulasi dengan landasan akademis makalah Anda.</p>
+          </div>
+        </div>
+
+        <div class="citations-list" id="citations-list">
+          
+          <!-- Citation 1: Vial 2019 -->
+          <div class="citation-card" id="cite-lockin">
+            <div class="citation-source">Vial (2019)</div>
+            <div class="citation-theory">Transformasi Digital & Disrupsi Operasional</div>
+            <div class="citation-explanation">
+              Disrupsi teknologi memicu perubahan strategi bisnis. UMKM mengalihkan operasional dari ketergantungan pihak ketiga ke arsitektur mandiri D2C untuk menjaga stabilitas jangka panjang.
+            </div>
+          </div>
+
+          <!-- Citation 2: Platform Lock-in & Commissions -->
+          <div class="citation-card" id="cite-commission">
+            <div class="citation-source">Gawer (2021) | Ballerini et al. (2023)</div>
+            <div class="citation-theory">Platform Lock-In & Erosi Margin Laba</div>
+            <div class="citation-explanation">
+              Ketergantungan tinggi pada marketplace pihak ketiga memicu platform lock-in akibat potongan komisi transaksi yang tinggi (15%-20%) serta hilangnya kepemilikan data perilaku konsumen.
+            </div>
+          </div>
+
+          <!-- Citation 3: D2C and Disintermediation -->
+          <div class="citation-card" id="cite-price">
+            <div class="citation-source">Direct-to-Consumer (D2C) & Social Commerce</div>
+            <div class="citation-theory">Disintermediasi Rantai Nilai Digital</div>
+            <div class="citation-explanation">
+              Menghubungkan produsen langsung ke pelanggan akhir. Memangkas rantai perantara pihak ketiga, menghindari perang harga simetris, dan menyelamatkan 15%-20% surplus keuntungan bersih.
+            </div>
+          </div>
+
+          <!-- Citation 4: Abed (2020) / Chatterjee (2022) -->
+          <div class="citation-card" id="cite-data">
+            <div class="citation-source">Abed (2020) | Chatterjee et al. (2022)</div>
+            <div class="citation-theory">Kemandirian Data Pelanggan & CRM Bootstrap</div>
+            <div class="citation-explanation">
+              Mengadopsi tools sederhana (katalog digital, QRIS) dan pengelolaan basis data kontak pelanggan mandiri untuk menjalankan retention marketing gratis guna meningkatkan retensi pelanggan hingga 25%.
+            </div>
+          </div>
+
+          <!-- Citation 5: Zhang et al. (2023) / Wamba (2022) -->
+          <div class="citation-card" id="cite-inventory">
+            <div class="citation-source">Zhang et al. (2023) | Wamba et al. (2022)</div>
+            <div class="citation-theory">Integrasi Rantai Pasok & Data Analytics</div>
+            <div class="citation-explanation">
+              Penyatuan sistem inventaris dan analitik data terpusat mengurangi silo operasional manual (oversell) serta meningkatkan efisiensi operasional keseluruhan hingga 25%.
+            </div>
+          </div>
+
+          <!-- Citation 6: Saunders et al. (2007) / BPS (2025) -->
+          <div class="citation-card" id="cite-omnichannel">
+            <div class="citation-source">Saunders et al. (2007) | BPS (2025)</div>
+            <div class="citation-theory">Metodologi Analisis Isi & Data Sekunder</div>
+            <div class="citation-explanation">
+              Studi kualitatif deskriptif berbasis data sekunder terkompilasi (BPS, Kemenkop UKM, e-Conomy SEA) untuk memetakan sebaran kendala digital UMKM dan merancang bagan alur proses bisnis model D2C mandiri.
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer Group Signature -->
+    <div class="sim-footer">
+      <span>Kelas: <strong>LC21</strong></span>
+      <span>Kelompok: <strong>Farah Agatha • Rasya Eka Putra Bosania • Arsha Muhammad Rayhan • Nathasya Stevania</strong></span>
+      <span>Universitas Bina Nusantara (Binus) &copy; 2026/2027</span>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

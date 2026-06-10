@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       // Mobile/Tablet: Structured Center-Aligned Vertical List
       // Ensures no horizontal overflow on narrow mobile screens (360px - 480px)
-      const topPadding = 30;
+      const topPadding = 90;
       const bottomPadding = 80;
       const availableH = viewH - topPadding - bottomPadding;
       const spacing = availableH / (nodes.length - 1);

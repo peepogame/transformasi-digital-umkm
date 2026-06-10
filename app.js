@@ -119,7 +119,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const cx = viewW / 2;
     const cy = viewH / 2;
 
-    if (viewW > 768) {
+    // Dynamically measure current element bounds (essential for responsive scaling)
+    nodes.forEach(n => {
+      n.width = n.element.offsetWidth || (viewW < 600 ? 180 : 250);
+      n.height = n.element.offsetHeight || (viewW < 600 ? 55 : 100);
+    });
+
+    if (viewW > 600) {
       // Desktop: Pentagonal ring arrangement around central core
       const radius = Math.min(viewW, viewH) * 0.32;
       const angleStep = (2 * Math.PI) / nodes.length;
@@ -131,11 +137,16 @@ document.addEventListener('DOMContentLoaded', () => {
         n.targetY = cy + radius * Math.sin(angle) - n.height / 2;
       });
     } else {
-      // Mobile/Tablet: Structured Vertical List
-      const spacing = (viewH - 120) / nodes.length;
+      // Mobile/Tablet: Structured Center-Aligned Vertical List
+      // Ensures no horizontal overflow on narrow mobile screens (360px - 480px)
+      const topPadding = 30;
+      const bottomPadding = 80;
+      const availableH = viewH - topPadding - bottomPadding;
+      const spacing = availableH / (nodes.length - 1);
+
       nodes.forEach((n, idx) => {
         n.targetX = cx - n.width / 2;
-        n.targetY = 40 + idx * spacing;
+        n.targetY = topPadding + idx * spacing;
       });
     }
   }

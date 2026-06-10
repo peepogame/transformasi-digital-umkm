@@ -750,20 +750,31 @@ header {
     font-size: 0.55rem;
   }
 
-  /* HUD Panel resizing on mobile */
+  /* HUD Panel - Overhauled to a relative sliding drawer on mobile */
   .metrics-hud {
-    position: absolute;
-    top: 0.75rem;
-    left: 50%;
-    transform: translate(-50%, -20px);
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
     flex-direction: row;
-    width: calc(100% - 1.5rem);
+    width: 100%;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0 0.75rem;
+    border-bottom: 0px solid transparent;
+    background: rgba(10, 16, 30, 0.45);
     gap: 0.4rem;
-    justify-content: center;
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   }
 
   .theme-post .metrics-hud {
-    transform: translate(-50%, 0);
+    max-height: 80px;
+    opacity: 1;
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--panel-border);
+    transform: none;
+    pointer-events: auto;
   }
 
   .hud-card {
@@ -774,6 +785,8 @@ header {
     border-radius: 8px;
     justify-content: center;
     text-align: center;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
   }
 
   .hud-icon {
